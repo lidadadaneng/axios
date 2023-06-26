@@ -1,0 +1,21 @@
+{
+  "name": "axios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt build",
+    "myTask": "grunt myTask",
+    "mock": "json-server --watch xxx.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.3.0",
+    "grunt-webpack": "^4.0.2",
+    "load-grunt-tasks": "^3.5.2",
+    "webpack": "^4.44.2"
+  }
+}
