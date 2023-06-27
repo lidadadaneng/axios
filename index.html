@@ -10,22 +10,21 @@
 </head>
 <body>
 <script>
+    let requestIndex;
+    let responseIndex;
+
     axios.interceptors.request.use(config => {
         console.log('请求拦截1', config);
-        config.url = 'http://localhost:3000/posts';
+        config.url = 'http://localhost:3000/posts'
         return config;
     }, function request11(error) {
         return Promise.reject(error);
-    }, {
-        synchronous: true // 同步
     });
-    axios.interceptors.request.use(config => {
+    requestIndex = axios.interceptors.request.use(config => {
         console.log('请求拦截2', config);
         return config;
     }, function request11(error) {
         return Promise.reject(error);
-    }, {
-        synchronous: true // 同步
     });
     axios.interceptors.response.use(response => {
         console.log('响应拦截1', response)
@@ -34,12 +33,15 @@
     }, function request22(error) {
         return Promise.reject(error);
     });
-    axios.interceptors.response.use(response => {
+    responseIndex = axios.interceptors.response.use(response => {
         console.log('响应拦截2', response)
         return response;
     }, function request22(error) {
         return Promise.reject(error);
     });
+    // 移除拦截器
+    axios.interceptors.request.eject(requestIndex);
+    axios.interceptors.response.eject(responseIndex);
 
     axios({
         url: '',
@@ -47,7 +49,6 @@
     }).then(res => {
         console.log(res)
     })
-
 </script>
 </body>
 </html>
